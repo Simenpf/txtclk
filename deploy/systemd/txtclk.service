@@ -1,0 +1,19 @@
+
+[Unit]
+Description=Text Clock FastAPI Server
+After=network.target
+
+[Service]
+Type=simple
+User=__USER__
+WorkingDirectory=/opt/txtclk
+
+Environment=PYTHONUNBUFFERED=1
+
+ExecStart=__UV_PATH__ run uvicorn txtclk.main:app --host 127.0.0.1 --port 8000
+
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
