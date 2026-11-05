@@ -1,3 +1,4 @@
+
 @font-face {
     font-family: "Taurus Mono";
     src: url("/static/fonts/taurus_font.otf") format("opentype");
@@ -10,6 +11,17 @@
     --inactive-color: #303030;
     --active-color: #ffffff;
     --indicator-color: #ffffff;
+
+    --glow-intensity: 12px;
+    --clock-width: 90vw;
+    --letter-size: 5vw;
+    --grid-gap: 0px;
+
+    --clock-offset-x: 0px;
+    --clock-offset-y: 0px;
+
+    --indicator-size: 10px;
+    --indicator-offset: 20px;
 }
 
 * {
@@ -29,11 +41,15 @@ body {
 
 .clock {
     position: relative;
-    width: min(90vw, 99vh);
+    width: min(var(--clock-width), 99vh);
     aspect-ratio: 11 / 10;
     display: flex;
     justify-content: center;
     align-items: center;
+    transform: translate(
+        var(--clock-offset-x),
+        var(--clock-offset-y)
+    );
 }
 
 .letter-grid {
@@ -44,11 +60,12 @@ body {
     grid-template-rows: repeat(10, 1fr);
     align-items: center;
     justify-items: center;
+    gap: var(--grid-gap);
 }
 
 .letter {
     font-family: "Taurus Mono", monospace;
-    font-size: clamp(12px, 5vw, 8vh);
+    font-size: clamp(12px, var(--letter-size), 8vh);
     font-weight: bold;
     color: var(--inactive-color);
     transition: color 200ms ease, text-shadow 200ms ease;
@@ -56,7 +73,7 @@ body {
 
 .letter.active {
     color: var(--active-color);
-    text-shadow: 0 0 12px var(--active-color);
+    text-shadow: 0 0 var(--glow-intensity) var(--active-color);
 }
 
 .minute-indicators {
@@ -65,8 +82,8 @@ body {
 
 .minute-indicators span {
     display: block;
-    width: 10px;
-    height: 10px;
+    width: var(--indicator-size);
+    height: var(--indicator-size);
     border-radius: 50%;
     background: var(--inactive-color);
 }
@@ -77,21 +94,324 @@ body {
 }
 
 .top-left {
-    top: -20px;
-    left: -20px;
+    top: calc(-1 * var(--indicator-offset));
+    left: calc(-1 * var(--indicator-offset));
 }
 
 .top-right {
-    top: -20px;
-    right: -20px;
+    top: calc(-1 * var(--indicator-offset));
+    right: calc(-1 * var(--indicator-offset));
 }
 
 .bottom-left {
-    bottom: -20px;
-    left: -20px;
+    bottom: calc(-1 * var(--indicator-offset));
+    left: calc(-1 * var(--indicator-offset));
 }
 
 .bottom-right {
-    bottom: -20px;
-    right: -20px;
+    bottom: calc(-1 * var(--indicator-offset));
+    right: calc(-1 * var(--indicator-offset));
+}
+
+
+/* Configuration page */
+
+body.config-page {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    overflow: auto;
+    padding: 30px;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.config-shell {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.config-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.config-header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.config-header a {
+    color: #aaa;
+    text-decoration: none;
+}
+
+.config-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 1fr);
+    gap: 30px;
+}
+
+.config-panel {
+    background: #151515;
+    border: 1px solid #292929;
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.config-panel h2 {
+    font-size: 17px;
+    margin: 0 0 20px;
+}
+
+.config-group {
+    margin-bottom: 22px;
+}
+
+.config-group label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 9px;
+    font-size: 14px;
+    color: #ddd;
+}
+
+.config-group output {
+    color: #999;
+}
+
+.config-group input[type="range"] {
+    width: 100%;
+    accent-color: white;
+}
+
+.config-group input[type="color"] {
+    width: 48px;
+    height: 30px;
+    padding: 2px;
+    border: 1px solid #444;
+    background: transparent;
+    border-radius: 5px;
+}
+
+.preview-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    overflow: hidden;
+}
+
+.preview-panel .clock {
+    width: min(100%, var(--clock-width), 55vh);
+    flex-shrink: 0;
+}
+
+.config-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.config-actions button {
+    border: 0;
+    border-radius: 6px;
+    padding: 11px 18px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#save-button {
+    background: white;
+    color: black;
+}
+
+#reset-button {
+    background: #333;
+    color: white;
+}
+
+#status {
+    min-height: 20px;
+    margin-top: 15px;
+    color: #aaa;
+    font-size: 13px;
+}
+
+@media (max-width: 750px) {
+    body.config-page {
+        padding: 15px;
+    }
+
+    .config-content {
+        grid-template-columns: 1fr;
+    }
+
+    .preview-panel {
+        min-height: 300px;
+        grid-row: 1;
+    }
+}
+
+
+
+/* Home page */
+
+body.home-page {
+    display: block;
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    overflow: auto;
+    padding: 40px 20px;
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+.home-shell {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.home-header {
+    margin: 35px 0 45px;
+}
+
+.home-logo {
+    font-size: 42px;
+    font-weight: bold;
+    letter-spacing: -2px;
+}
+
+.home-logo span {
+    color: #888;
+}
+
+.home-header p {
+    color: #888;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.home-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.home-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 22px;
+    background: #151515;
+    border: 1px solid #292929;
+    border-radius: 12px;
+    color: white;
+    text-decoration: none;
+    transition: background 150ms ease, border-color 150ms ease;
+}
+
+.home-card:hover {
+    background: #202020;
+    border-color: #555;
+}
+
+.home-card-icon {
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    background: #252525;
+    border-radius: 10px;
+    font-size: 25px;
+    color: #ddd;
+}
+
+.home-card h2 {
+    margin: 0 0 6px;
+    font-size: 17px;
+}
+
+.home-card p {
+    margin: 0;
+    color: #888;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.home-arrow {
+    margin-left: auto;
+    color: #777;
+    font-size: 20px;
+}
+
+.system-section {
+    margin-top: 45px;
+}
+
+.system-section h2 {
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #aaa;
+}
+
+.reboot-button {
+    width: 100%;
+    padding: 16px;
+    background: #241616;
+    border: 1px solid #492727;
+    border-radius: 10px;
+    color: #ff9999;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.reboot-button span {
+    margin-right: 10px;
+    font-size: 19px;
+}
+
+.reboot-button:hover {
+    background: #351b1b;
+}
+
+.reboot-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#reboot-status {
+    min-height: 20px;
+    margin-top: 12px;
+    color: #999;
+    font-size: 13px;
+}
+
+.home-footer {
+    margin-top: 55px;
+    color: #555;
+    font-size: 12px;
+    text-align: center;
+}
+
+@media (max-width: 500px) {
+    body.home-page {
+        padding: 20px 16px;
+    }
+
+    .home-header {
+        margin: 30px 0;
+    }
+
+    .home-card {
+        padding: 18px;
+    }
 }

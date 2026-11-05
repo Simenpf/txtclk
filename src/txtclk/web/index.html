@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>txtclk</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="home-page">
+
+    <main class="home-shell">
+        <header class="home-header">
+            <div class="home-logo">txtclk<span>.</span></div>
+            <p>Raspberry Pi control panel</p>
+        </header>
+
+        <section class="home-menu">
+            <a href="/display" class="home-card">
+                <div class="home-card-icon">◷</div>
+                <div>
+                    <h2>Clock display</h2>
+                    <p>Open the fullscreen word clock</p>
+                </div>
+                <span class="home-arrow">↗</span>
+            </a>
+
+            <a href="/config" class="home-card">
+                <div class="home-card-icon">⚙</div>
+                <div>
+                    <h2>Configuration</h2>
+                    <p>Change colors, sizing and positioning</p>
+                </div>
+                <span class="home-arrow">↗</span>
+            </a>
+
+            <a href="/extras" class="home-card">
+                <div class="home-card-icon">✦</div>
+                <div>
+                    <h2>Extras</h2>
+                    <p>Additional features and tools</p>
+                </div>
+                <span class="home-arrow">↗</span>
+            </a>
+        </section>
+
+        <section class="system-section">
+            <h2>System</h2>
+
+            <button id="reboot-button" class="reboot-button">
+                <span>↻</span>
+                Reboot Raspberry Pi
+            </button>
+
+            <p id="reboot-status" role="status"></p>
+        </section>
+
+        <footer class="home-footer">
+            txtclk · Raspberry Pi
+        </footer>
+    </main>
+
+    <script src="/static/index.js"></script>
+</body>
+</html>

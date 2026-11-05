@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>txtclk configuration</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="config-page">
+
+    <div class="config-shell">
+        <header class="config-header">
+            <h1>Clock configuration</h1>
+            <a href="/display">Back to clock ↗</a>
+        </header>
+
+        <section class="config-panel">
+            <h2>Appearance</h2>
+
+            <div class="config-group">
+                <label for="background">Background</label>
+                <input type="color" id="background">
+            </div>
+
+            <div class="config-group">
+                <label for="inactive_color">Inactive letters</label>
+                <input type="color" id="inactive_color">
+            </div>
+
+            <div class="config-group">
+                <label for="active_color">Active letters</label>
+                <input type="color" id="active_color">
+            </div>
+
+            <div class="config-group">
+                <label for="indicator_color">Minute indicators</label>
+                <input type="color" id="indicator_color">
+            </div>
+
+            <h2>Clock layout</h2>
+
+            <div class="config-group">
+                <label for="glow_intensity">Glow intensity <output></output></label>
+                <input type="range" id="glow_intensity" min="0" max="40" step="1">
+            </div>
+
+            <div class="config-group">
+                <label for="clock_width_vw">Clock width <output></output></label>
+                <input type="range" id="clock_width_vw" min="30" max="99" step="1">
+            </div>
+
+            <div class="config-group">
+                <label for="letter_size_vw">Letter size <output></output></label>
+                <input type="range" id="letter_size_vw" min="1" max="10" step="0.1">
+            </div>
+
+            <div class="config-group">
+                <label for="grid_gap_px">Letter spacing <output></output></label>
+                <input type="range" id="grid_gap_px" min="0" max="20" step="1">
+            </div>
+
+            <div class="config-group">
+                <label for="offset_x_px">Horizontal position <output></output></label>
+                <input type="range" id="offset_x_px" min="-200" max="200" step="1">
+            </div>
+
+            <div class="config-group">
+                <label for="offset_y_px">Vertical position <output></output></label>
+                <input type="range" id="offset_y_px" min="-200" max="200" step="1">
+            </div>
+
+            <h2>Minute indicators</h2>
+
+            <div class="config-group">
+                <label for="indicator_size_px">Indicator size <output></output></label>
+                <input type="range" id="indicator_size_px" min="2" max="30" step="1">
+            </div>
+
+            <div class="config-group">
+                <label for="indicator_offset_px">Indicator distance <output></output></label>
+                <input type="range" id="indicator_offset_px" min="0" max="100" step="1">
+            </div>
+
+            <div id="status">Connecting...</div>
+        </section>
+    </div>
+
+    <script src="/static/config.js"></script>
+</body>
+</html>
