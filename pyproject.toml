@@ -24,6 +24,12 @@ build-backend = "hatchling.build"
 [tool.hatch.build.targets.wheel]
 packages = ["src/txtclk"]
 
+[tool.hatch.build]
+include = [
+    "src/txtclk/static/**",
+    "src/txtclk/templates/**",
+]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
