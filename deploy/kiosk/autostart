@@ -1,5 +1,8 @@
 #!/bin/bash
 
-# Start the text clock kiosk
-sleep 10
-/opt/txtclk/deploy/kiosk/start-kiosk.sh &
+# Give the desktop time to initialize
+sleep 15
+
+# Start the text clock kiosk and capture startup output
+/opt/txtclk/deploy/kiosk/start-kiosk.sh \
+    >> /home/sflotake/txtclk-kiosk.log 2>&1 &
