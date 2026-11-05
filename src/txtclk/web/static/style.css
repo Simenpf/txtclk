@@ -1,3 +1,9 @@
+@font-face {
+    font-family: "Taurus Mono";
+    src: url("/static/fonts/taurus_font.otf") format("opentype");
+    font-weight: bold;
+    font-style: normal;
+}
 
 :root {
     --background: #080808;
@@ -41,7 +47,7 @@ body {
 }
 
 .letter {
-    font-family: monospace;
+    font-family: "Taurus Mono", monospace;
     font-size: clamp(12px, 5vw, 8vh);
     font-weight: bold;
     color: var(--inactive-color);

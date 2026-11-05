@@ -31,6 +31,9 @@ app.mount(
 def display():
     return FileResponse(WEB_DIR / "display.html")
 
+@app.get("/test")
+def test():
+    return FileResponse(WEB_DIR / "test.html")
 
 @app.get("/health")
 def health():
