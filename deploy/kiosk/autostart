@@ -1,4 +1,5 @@
 #!/bin/bash
 
 # Start the text clock kiosk
+sleep 10
 /opt/txtclk/deploy/kiosk/start-kiosk.sh &
