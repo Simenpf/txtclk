@@ -9,8 +9,9 @@ until curl -fsS "$URL" >/dev/null; do
     sleep 2
 done
 
-# Launch Chromium
 exec chromium \
+    --ozone-platform=wayland \
+    --password-store=basic \
     --kiosk \
     --noerrdialogs \
     --disable-infobars \
