@@ -10,6 +10,7 @@ until curl -fsS "$URL" >/dev/null; do
     sleep 2
 done
 
+sleep 5
 unclutter -idle 0.5 -root &
 
 exec chromium \
