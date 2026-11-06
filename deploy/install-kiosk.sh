@@ -4,11 +4,9 @@ set -e
 PROJECT_DIR="/opt/txtclk"
 KIOSK_DIR="$PROJECT_DIR/deploy/kiosk"
 
-SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-
 AUTOSTART_DIR="$HOME/.config/labwc"
 AUTOSTART_FILE="$AUTOSTART_DIR/autostart"
-AUTOSTART_SOURCE="$SCRIPT_DIR/autostart"
+AUTOSTART_SOURCE="$KIOSK_DIR/autostart"
 
 echo "Installing Chromium kiosk..."
 
