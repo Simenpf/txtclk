@@ -247,6 +247,11 @@ body.config-page {
     cursor: not-allowed;
 }
 
+.reset-button.confirm-reset {
+    background-color: #b83232;
+    color: white;
+    border-color: #b83232;
+}
 
 #status {
     min-height: 20px;
