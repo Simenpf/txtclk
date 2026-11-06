@@ -1,15 +1,5 @@
 #!/bin/bash
 
-# Disable Raspberry Pi desktop wallpaper and icons.
-# Kill the respawn wrappers first, otherwise they restart the processes.
-pkill -f '[l]wrespawn.*pcmanfm-pi' || true
-pkill -f '[l]wrespawn.*wf-panel-pi' || true
-
-# Stop the actual desktop processes.
-pkill -x pcmanfm || true
-pkill -x pcmanfm-pi || true
-pkill -x wf-panel-pi || true
-
 # Start txtclk kiosk.
 # The existing script handles Chromium startup.
  /opt/txtclk/deploy/kiosk/start-kiosk.sh &
