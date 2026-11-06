@@ -1,4 +1,3 @@
-
 const settingIds = [
     "background",
     "inactive_color",
@@ -120,3 +119,42 @@ for (const id of settingIds) {
 }
 
 loadConfig();
+
+
+const resetButton = document.getElementById("reset-config");
+
+if (resetButton) {
+    resetButton.addEventListener("click", async () => {
+        if (!confirm("Reset all clock settings to factory defaults?")) {
+            return;
+        }
+
+        clearTimeout(updateTimeout);
+
+        resetButton.disabled = true;
+        showStatus("Resetting configuration...");
+
+        try {
+            const response = await fetch("/api/config", {
+                method: "DELETE",
+            });
+
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.detail || "Could not reset configuration.");
+            }
+
+            const config = await response.json();
+
+            populateForm(config);
+            showStatus("Factory defaults restored");
+
+        } catch (error) {
+            console.error("Reset failed:", error);
+            showStatus(`Error: ${error.message}`);
+
+        } finally {
+            resetButton.disabled = false;
+        }
+    });
+}

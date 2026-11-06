@@ -37,10 +37,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: none;
 }
 
 .clock {
+    cursor: none;
     position: relative;
     width: min(var(--clock-width), 99vh);
     aspect-ratio: 11 / 10;
@@ -226,15 +226,27 @@ body.config-page {
     font-size: 14px;
 }
 
-#save-button {
-    background: white;
-    color: black;
+.reset-button {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #a33;
+    border-radius: 8px;
+    background: transparent;
+    color: #ff6666;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
 }
 
-#reset-button {
-    background: #333;
-    color: white;
+.reset-button:hover {
+    background: #331818;
 }
+
+.reset-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 
 #status {
     min-height: 20px;

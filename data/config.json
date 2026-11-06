@@ -1,14 +1,14 @@
 {
-    "background": "#000000",
-    "inactive_color": "#312f2f",
+    "background": "#080808",
+    "inactive_color": "#303030",
     "active_color": "#ffffff",
     "indicator_color": "#ffffff",
-    "glow_intensity": 26,
-    "clock_width_vw": 67.0,
-    "letter_size_vw": 5.1,
-    "grid_gap_px": 7,
-    "offset_x_px": 12,
+    "glow_intensity": 12,
+    "clock_width_vw": 90,
+    "letter_size_vw": 5,
+    "grid_gap_px": 0,
+    "offset_x_px": 0,
     "offset_y_px": 0,
-    "indicator_size_px": 30,
+    "indicator_size_px": 10,
     "indicator_offset_px": 20
 }
