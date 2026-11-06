@@ -9,6 +9,7 @@ until curl -fsS "$URL" >/dev/null; do
     sleep 2
 done
 
+# Wait a few seconds to ensure the server is fully ready
 sleep 5
 
 exec chromium \
