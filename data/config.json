@@ -1,7 +1,7 @@
 {
     "background": "#000000",
     "inactive_color": "#312f2f",
-    "active_color": "#ff0000",
+    "active_color": "#ffffff",
     "indicator_color": "#ffffff",
     "glow_intensity": 26,
     "clock_width_vw": 67.0,

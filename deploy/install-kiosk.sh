@@ -10,7 +10,7 @@ echo "Installing Chromium kiosk..."
 
 # Install Chromium and curl
 sudo apt update
-sudo apt install -y chromium curl
+sudo apt install -y chromium curl unclutter
 
 # Ensure labwc configuration directory exists
 mkdir -p "$AUTOSTART_DIR"

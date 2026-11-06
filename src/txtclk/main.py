@@ -120,21 +120,6 @@ def display():
 def extras():
     return FileResponse(WEB_DIR / "extras.html")
 
-@app.post("/api/system/reboot")
-def reboot_pi():
-    try:
-        subprocess.Popen(
-            ["sudo", "-n", "/usr/sbin/reboot"],
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
-        )
-        return {"status": "rebooting"}
-    except OSError as error:
-        raise HTTPException(
-            status_code=500,
-            detail="Could not start Raspberry Pi reboot.",
-        ) from error
-
 @app.get("/config")
 def config_page():
     return FileResponse(WEB_DIR / "config.html")
