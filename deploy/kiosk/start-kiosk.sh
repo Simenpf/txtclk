@@ -10,7 +10,6 @@ until curl -fsS "$URL" >/dev/null; do
 done
 
 sleep 5
-unclutter -idle 0.5 -root &
 
 exec chromium \
     --ozone-platform=wayland \
